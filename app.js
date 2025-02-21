@@ -8,13 +8,16 @@ require("dotenv").config();
 const app = express();
 
 mongoose
-  .connect(process_params.env.MONGO_CONNECTION, {})
+  .connect(process.env.MONGO_CONNECTION, {})
   .then(() => {
     console.log("Database connected!");
   })
   .catch(() => {
     console.log("Database failed connected!");
   });
+
+//   Models initiaalization
+require("./models/user");
 
 app.use(express.json());
 
