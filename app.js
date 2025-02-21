@@ -1,8 +1,20 @@
 require("express-async-errors");
 const express = require("express");
+const mongoose = require("mongoose");
 const errorHandler = require("./handlers/errorHandler");
 
+require("dotenv").config();
+
 const app = express();
+
+mongoose
+  .connect(process_params.env.MONGO_CONNECTION, {})
+  .then(() => {
+    console.log("Database connected!");
+  })
+  .catch(() => {
+    console.log("Database failed connected!");
+  });
 
 app.use(express.json());
 
