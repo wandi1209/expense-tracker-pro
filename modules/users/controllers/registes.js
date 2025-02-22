@@ -1,6 +1,19 @@
-const register = (req, res) => {
-  res.status(200).json({
-    status: "Hello from register",
+const mongoose = require("mongoose");
+
+const register = async (req, res) => {
+  const usersModel = mongoose.model("users");
+
+  const { name, email, password, confirm_password, balance } = req.body;
+
+  await usersModel.create({
+    name: name,
+    email: email,
+    password: password,
+    balance: balance,
+  });
+  res.status(201).json({
+    status: "success",
+    message: "User registered successfully",
   });
 };
 
