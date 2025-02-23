@@ -1,7 +1,6 @@
 const mongoose = require("mongoose");
 const bcrypt = require("bcryptjs");
 const jsonWebToken = require("jsonwebtoken");
-require("dotenv");
 
 const login = async (req, res) => {
   const userModel = mongoose.model("users");
