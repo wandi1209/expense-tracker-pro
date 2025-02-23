@@ -1,6 +1,6 @@
 const userDashboard = async (req, res) => {
   res.status(200).json({
-    status: "Hello from  userRegister",
+    status: "Hello from userDashboard",
   });
 };
 
