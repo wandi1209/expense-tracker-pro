@@ -5,6 +5,7 @@ const getTransactions = async (req, res) => {
 
   const transactions = await transactionsModel.find({
     user_id: req.user._id,
+    ...req.query,
   });
 
   res.status(200).json({
