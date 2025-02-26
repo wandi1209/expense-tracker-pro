@@ -8,12 +8,25 @@ const transactionsSchema = new mongoose.Schema(
       ref: "users",
       required: true,
     },
+    amount: {
+      type: Number,
+      required: true,
+    },
+    transation_field: {
+      type: String,
+      required: true,
+      enum: ["income", "expense"],
+    },
+    remarks: {
+      type: String,
+      required: true,
+    },
   },
   {
     timestamps: true,
   }
 );
 
-const transactionsModel = mongoose.model("users", userSchema);
+const transactionsModel = mongoose.model("transactions", transactionsSchema);
 
 module.exports = transactionsModel;
