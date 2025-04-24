@@ -4,6 +4,7 @@ const login = require("./controllers/login");
 const userDashboard = require("./controllers/userDashboard");
 const auth = require("../../middleware/auth");
 const forgotPassword = require("./controllers/forgotPassword");
+const resetPassword = require("./controllers/resetPassword");
 
 const userRoute = express.Router();
 
@@ -12,6 +13,7 @@ userRoute.post("/register", register);
 userRoute.post("/login", login);
 
 userRoute.post("/forgot-password", forgotPassword)
+userRoute.post("/reset-password", resetPassword)
 
 userRoute.use(auth);
 
