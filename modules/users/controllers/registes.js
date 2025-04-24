@@ -3,6 +3,7 @@ const bcrypt = require("bcryptjs");
 
 const userModel = require("../../../models/user");
 const jwtManager = require("../../../managers/jwtManager");
+const emailManager = require("../../../managers/emailManager");
 const nodemailer = require("nodemailer");
 
 const register = async (req, res) => {
@@ -36,22 +37,12 @@ const register = async (req, res) => {
 
   const accessToken = jwtManager(creatingAccount);
 
-  var transport = nodemailer.createTransport({
-    host: "sandbox.smtp.mailtrap.io",
-    port: 2525,
-    auth: {
-      user: "cab86211992a17",
-      pass: "fdb7a444e85317",
-    },
-  });
-
-  transport.sendMail({
-    to: creatingAccount.email,
-    from: "info@expensetracker.com",
-    text: "Welcome to Expense Tracker PRO. We hope you can manage your expenses easily from our platform!",
-    html: "<h1>Welcome to Expense Tracker PRO.</h1> </br> </br>  We hope you can manage your expenses easily from our platform!",
-    subject: "Welcome to Expense Tracker PRO!",
-  });
+  await emailManager(
+    creatingAccount.email, 
+    "Welcome to Expense Tracker PRO. We hope you can manage your expenses easily from our platform!", 
+    "<h1>Welcome to Expense Tracker PRO.</h1> </br> </br>  We hope you can manage your expenses easily from our platform!", 
+    "Welcome to Expense Tracker PRO!"
+  );
 
   res.status(201).json({
     status: "success",
