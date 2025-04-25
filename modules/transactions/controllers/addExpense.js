@@ -20,8 +20,9 @@ const addExpense = async (req, res) => {
     user_id: req.user._id,
     amount: amount,
     remarks: remarks,
-    transation_field: "expense",
+    transaction_field: "expense",
   });
+
 
   await userModel.updateOne(
     {

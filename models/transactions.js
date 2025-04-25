@@ -12,7 +12,7 @@ const transactionsSchema = new mongoose.Schema(
       type: Number,
       required: true,
     },
-    transation_field: {
+    transaction_field: {
       type: String,
       required: true,
       enum: ["income", "expense"],

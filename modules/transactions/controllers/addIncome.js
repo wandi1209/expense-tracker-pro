@@ -17,7 +17,7 @@ const addIncome = async (req, res) => {
     user_id: req.user._id,
     amount: amount,
     remarks: remarks,
-    transation_field: "income",
+    transaction_field: "income",
   });
 
   await userModel.updateOne(
