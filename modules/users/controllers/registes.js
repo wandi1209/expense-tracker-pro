@@ -17,7 +17,7 @@ const register = async (req, res) => {
   if (password.length < 5) throw "Password must be at least 5 characters long.";
 
   if (!name) throw "Name must be provided!";
-  if (password !== confirm_password)
+  if (password != confirm_password)
     throw "Password and confirmed password doesn't match!";
 
   const getDuplicateEmail = await userModel.findOne({
@@ -38,9 +38,9 @@ const register = async (req, res) => {
   const accessToken = jwtManager(creatingAccount);
 
   await emailManager(
-    creatingAccount.email, 
-    "Welcome to Expense Tracker PRO. We hope you can manage your expenses easily from our platform!", 
-    "<h1>Welcome to Expense Tracker PRO.</h1> </br> </br>  We hope you can manage your expenses easily from our platform!", 
+    creatingAccount.email,
+    "Welcome to Expense Tracker PRO. We hope you can manage your expenses easily from our platform!",
+    "<h1>Welcome to Expense Tracker PRO.</h1> </br> </br>  We hope you can manage your expenses easily from our platform!",
     "Welcome to Expense Tracker PRO!"
   );
 

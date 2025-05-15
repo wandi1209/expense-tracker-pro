@@ -18,7 +18,7 @@ const userDashboard = async (req, res) => {
     .limit(5);
 
   res.status(200).json({
-    status: "Hello from userDashboard",
+    status: "success",
     data: getUser,
     transactions,
   });
